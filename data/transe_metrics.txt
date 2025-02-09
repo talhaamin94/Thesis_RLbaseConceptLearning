@@ -1,0 +1,5 @@
+Mean Rank (MR): 1.00
+Mean Reciprocal Rank (MRR): 1.0000
+Hits@1: 1.0000
+Hits@3: 1.0000
+Hits@10: 1.0000
