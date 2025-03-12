@@ -176,8 +176,8 @@ class RDFGraphConverter:
                 self.hetero_data[edge_key].edge_index = edge_index
                 self.hetero_data[edge_key].edge_type = edge_type_tensor
 
-        print(f"[DEBUG] Extracted {len(relation_type_counter)} unique relation types.")
-        print(f"[DEBUG] Relation types: {relation_type_counter}")
+        # print(f"[DEBUG] Extracted {len(relation_type_counter)} unique relation types.")
+        # print(f"[DEBUG] Relation types: {relation_type_counter}")
 
 
 

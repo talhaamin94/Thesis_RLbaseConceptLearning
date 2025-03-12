@@ -4,96 +4,100 @@ import itertools
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-
+from Graph_to_Homogeneous import Graph_to_Homogeneous
 
 
 
 # Load dataset
 converter = RDFGraphConverter("AIFB")
 hetero_data = converter.load_dataset()
+from GNNTrainer import GNNTrainer
+from DataConversion import RDFGraphConverter
+import itertools
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+from Graph_to_Homogeneous import Graph_to_Homogeneous
+
+# Load dataset
+converter = RDFGraphConverter("AIFB")
+hetero_data = converter.load_dataset()
+
+# Re-import necessary libraries
+import pandas as pd
+import os
 
 # # Define hyperparameter grid
-# learning_rates = [0.001, 0.01, 0.1]
+# learning_rates = [0.005, 0.01, 0.1]
 # hidden_dims = [16, 32, 64]
-# epochs_list = [10, 20, 50]
+# epochs_list = [15, 25, 40]
+# dropout_rates = [0.2, 0.3, 0.4]
 
 # # Store results
-# best_f1 = 0
-# best_hyperparams = None
-# results = []
+# experiment_results = []
 
-# # Iterate through all combinations of hyperparameters
-# for lr, hidden_dim, epochs in itertools.product(learning_rates, hidden_dims, epochs_list):
-#     print(f"\nTraining with LR={lr}, Hidden Dim={hidden_dim}, Epochs={epochs}")
-    
-#     # Initialize trainer with different hyperparameters
-#     gnn_trainer = GNNTrainer(
-#         hetero_data, 
-#         node_type="Person",  
-#         hidden_dim=hidden_dim, 
-#         learning_rate=lr
-#     )
+# # Placeholder for hetero_data (Assuming it should be loaded before running this)
+# # hetero_data = Load your heterogeneous graph data here
 
-#     # Train model
-#     gnn_trainer.train(epochs=epochs)
+# # Check if GNNTrainer is defined before proceeding
+# try:
+#     GNNTrainer
+# except NameError:
+#     print("Error: GNNTrainer is not defined. Please ensure the class is loaded before running this script.")
+#     raise
 
-#     # Evaluate on the test set
-#     _, _, _, f1_score_test = gnn_trainer.evaluate_test_set()
+# # Iterate over all hyperparameter combinations
+# for lr in learning_rates:
+#     for hidden_dim in hidden_dims:
+#         for epochs in epochs_list:
+#             for dropout_rate in dropout_rates:
+#                 print(f"\nTraining with LR={lr}, Hidden Dim={hidden_dim}, Epochs={epochs}, Dropout={dropout_rate}")
 
-#     # Store results
-#     results.append((lr, hidden_dim, epochs, f1_score_test))
+#                 # Initialize and train the model
+#                 gnn_trainer = GNNTrainer(
+#                     hetero_data, 
+#                     node_type="Person",
+#                     hidden_dim=hidden_dim, 
+#                     learning_rate=lr,
+#                     dropout_rate=dropout_rate
+#                 )
+                
+#                 gnn_trainer.run_training(epochs=epochs)
 
-#     # Update best hyperparameters
-#     if f1_score_test > best_f1:
-#         best_f1 = f1_score_test
-#         best_hyperparams = (lr, hidden_dim, epochs)
+#                 # Evaluate the model
+#                 train_acc, test_acc = gnn_trainer.test()
 
-# # Convert results to a NumPy array for easier plotting
-# results_array = np.array(results, dtype=object)
+#                 # Store results
+#                 experiment_results.append({
+#                     "Learning Rate": lr,
+#                     "Hidden Dim": hidden_dim,
+#                     "Epochs": epochs,
+#                     "Dropout Rate": dropout_rate,
+#                     "Train Accuracy": train_acc,
+#                     "Test Accuracy": test_acc
+#                 })
 
-# # Reshape results into a 3D array (learning_rates x hidden_dims x epochs)
-# f1_scores = results_array[:, 3].astype(float).reshape(
-#     len(learning_rates), len(hidden_dims), len(epochs_list)
-# )
+# # Convert results to a DataFrame for visualization
+# experiment_results_df = pd.DataFrame(experiment_results)
 
-# # Plot the results
-# fig, ax = plt.subplots(1, len(epochs_list), figsize=(15, 5))
-
-# for i, epoch in enumerate(epochs_list):
-#     im = ax[i].imshow(f1_scores[:, :, i], cmap="viridis", aspect="auto")
-#     ax[i].set_xticks(np.arange(len(hidden_dims)))
-#     ax[i].set_xticklabels(hidden_dims)
-#     ax[i].set_yticks(np.arange(len(learning_rates)))
-#     ax[i].set_yticklabels(learning_rates)
-#     ax[i].set_xlabel("Hidden Dim")
-#     ax[i].set_title(f"Epochs: {epoch}")
-
-# ax[0].set_ylabel("Learning Rate")
-# fig.colorbar(im, ax=ax, orientation="vertical", fraction=0.02, pad=0.05)
-
-# # Define the save path
+# # Save results for further analysis
 # save_dir = "results"
-# save_path = os.path.join(save_dir, "hyperparameter_tuning.png")
-
-# # Ensure the directory exists
 # os.makedirs(save_dir, exist_ok=True)
+# results_save_path = os.path.join(save_dir, "hyperparameter_results.csv")
+# experiment_results_df.to_csv(results_save_path, index=False)
 
-# # Save the figure
-# plt.savefig(save_path, dpi=300, bbox_inches="tight")
+# # Display results
+# print("\nHyperparameter Tuning Results:")
+# print(experiment_results_df)
 
-# print(f"Figure saved successfully at {save_path}")
+# print(f"\nHyperparameter tuning results saved to: {results_save_path}")
 
-# plt.show()
+# Train and evaluate the GNN model
 
 
-
-# # Print the best hyperparameter combination
-# print("\nBest Hyperparameters:")
-# print(f"Learning Rate: {best_hyperparams[0]}")
-# print(f"Hidden Dimension: {best_hyperparams[1]}")
-# print(f"Epochs: {best_hyperparams[2]}")
-# print(f"Best F1 Score: {best_f1:.4f}")
 
 gnn = GNNTrainer(hetero_data, "Person")
-gnn.train()
-gnn.evaluate_test_set()
+gnn.run_training()
+# gnn.evaluate_test_set()
+# print(len(gnn.get_positive_nodes())+len(gnn.get_negative_nodes()))
+# print(gnn.get_negative_nodes())
