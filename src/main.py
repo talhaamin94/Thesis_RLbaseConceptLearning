@@ -1,31 +1,47 @@
 from GNNTrainer import GNNTrainer
-from DataConversion import RDFGraphConverter
+from RDFGraphConverter import RDFGraphConverter
 import itertools
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-from Graph_to_Homogeneous import Graph_to_Homogeneous
-
-
-
-# Load dataset
-converter = RDFGraphConverter("AIFB")
-hetero_data = converter.load_dataset()
-from GNNTrainer import GNNTrainer
-from DataConversion import RDFGraphConverter
-import itertools
-import matplotlib.pyplot as plt
-import numpy as np
-import os
-from Graph_to_Homogeneous import Graph_to_Homogeneous
-
-# Load dataset
-converter = RDFGraphConverter("AIFB")
-hetero_data = converter.load_dataset()
-
-# Re-import necessary libraries
 import pandas as pd
-import os
+from MiniDataset import MiniDataset
+from HGNNTrainer import HGNNTrainer
+
+# Load dataset
+# converter = RDFGraphConverter("AIFB")
+# hetero_data = converter.load_dataset()
+# print(converter.get_statistics())
+# print(hetero_data)
+# gnn = GNNTrainer(hetero_data, "Person")
+# gnn.run_training()
+
+
+
+converter = RDFGraphConverter("mini")
+hetero_data = converter.load_dataset()
+# print(converter.get_statistics())
+# print(hetero_data)
+
+gnn = GNNTrainer(hetero_data, "A", hidden_dim=64, learning_rate=0.01,dropout_rate=0.5, wd = 1e-3)
+# gnn.run_training(30)
+
+# gnn = HGNNTrainer(hetero_data, "A", hidden_dim=32, learning_rate=0.001, dropout_rate=0.5, wd=1e-3)
+# gnn.train_model(epochs=50)
+# test_acc = gnn.test_model()
+# print(f"Test Accuracy: {test_acc:.4f}")
+# converter = RDFGraphConverter("")
+
+
+
+
+
+
+
+# gnn.evaluate_test_set()
+# print(len(gnn.get_positive_nodes())+len(gnn.get_negative_nodes()))
+# print(gnn.get_negative_nodes())
+
 
 # # Define hyperparameter grid
 # learning_rates = [0.005, 0.01, 0.1]
@@ -93,11 +109,3 @@ import os
 # print(f"\nHyperparameter tuning results saved to: {results_save_path}")
 
 # Train and evaluate the GNN model
-
-
-
-gnn = GNNTrainer(hetero_data, "Person")
-gnn.run_training()
-# gnn.evaluate_test_set()
-# print(len(gnn.get_positive_nodes())+len(gnn.get_negative_nodes()))
-# print(gnn.get_negative_nodes())
