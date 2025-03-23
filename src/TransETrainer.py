@@ -219,7 +219,7 @@ class TransETrainer:
         return MRR
 
     def train(self):
-        print("Training TransE on AIFB...")
+        print("Training TransE")
 
         train_edges = torch.tensor([(self.node_to_index[h], self.relation_to_index[r], self.node_to_index[t]) 
                                     for (h, r, t) in self.unique_edges])

@@ -6,8 +6,9 @@ import numpy as np
 import os
 import pandas as pd
 from MiniDataset import MiniDataset
-from HGNNTrainer import HGNNTrainer
-
+from TransETrainer import TransETrainer
+from RLTrainer import RLTrainer
+import time
 # Load dataset
 # converter = RDFGraphConverter("AIFB")
 # hetero_data = converter.load_dataset()
@@ -16,15 +17,46 @@ from HGNNTrainer import HGNNTrainer
 # gnn = GNNTrainer(hetero_data, "Person")
 # gnn.run_training()
 
+def inspect_node_connections(data, node_type, node_local_index):
+    if node_type not in data.node_types:
+        print(f"[ERROR] Node type '{node_type}' does not exist in the graph.")
+        return
+
+    num_nodes = data[node_type].x.size(0)
+    if node_local_index < 0 or node_local_index >= num_nodes:
+        print(f"[ERROR] Node index {node_local_index} is out of range for node type '{node_type}' (max index: {num_nodes-1}).")
+        return
+
+    print(f"[INFO] Node ({node_type}, {node_local_index}) exists. Checking for connections...\n")
+    found = False
+
+    for edge_type in data.edge_types:
+        edge_index = data[edge_type].edge_index
+        for i in range(edge_index.shape[1]):
+            src, dst = edge_index[0, i].item(), edge_index[1, i].item()
+            if edge_type[0] == node_type and src == node_local_index:
+                print(f"Outgoing: ({node_type}, {node_local_index}) --[{edge_type[1]}]--> ({edge_type[2]}, {dst})")
+                found = True
+            elif edge_type[2] == node_type and dst == node_local_index:
+                print(f"Incoming: ({edge_type[0]}, {src}) --[{edge_type[1]}]--> ({node_type}, {node_local_index})")
+                found = True
+
+    if not found:
+        print(f"[INFO] No connections found for ({node_type}, {node_local_index}).")
 
 
-converter = RDFGraphConverter("mini")
-hetero_data = converter.load_dataset()
-# print(converter.get_statistics())
-# print(hetero_data)
+# converter = RDFGraphConverter("mini")
+# hetero_data = converter.load_dataset()
+# # print(converter.get_statistics())
+# # print(hetero_data)
 
-gnn = GNNTrainer(hetero_data, "A", hidden_dim=64, learning_rate=0.01,dropout_rate=0.5, wd = 1e-3)
-# gnn.run_training(30)
+# gnn = GNNTrainer(hetero_data, "A", hidden_dim=64, learning_rate=0.01,dropout_rate=0.5, wd = 1e-3)
+# # gnn.run_training(30)
+
+# gnn.load_model()
+# transE = TransETrainer(hetero_data,128,100,1024,0.002)
+# transE.train()
+
 
 # gnn = HGNNTrainer(hetero_data, "A", hidden_dim=32, learning_rate=0.001, dropout_rate=0.5, wd=1e-3)
 # gnn.train_model(epochs=50)
@@ -109,3 +141,11 @@ gnn = GNNTrainer(hetero_data, "A", hidden_dim=64, learning_rate=0.01,dropout_rat
 # print(f"\nHyperparameter tuning results saved to: {results_save_path}")
 
 # Train and evaluate the GNN model
+converter = RDFGraphConverter("aifb")
+hetero_data = converter.load_dataset()
+class_prefix, relation_prefix = converter.get_namespace_prefixes()
+
+
+# inspect_node_connections(hetero_data, "Person", 128)
+rlagent = RLTrainer(hetero_data,"Person",class_prefix,relation_prefix,20)
+rlagent.train()

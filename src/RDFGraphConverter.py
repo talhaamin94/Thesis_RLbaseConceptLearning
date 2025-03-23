@@ -52,13 +52,16 @@ class RDFGraphConverter:
             # g.parse("data/mini/raw/rdf_graph.nt", format="nt")
         else:
             raise ValueError("Unsupported dataset. Choose 'AIFB' or 'MUTAG'.")
+       
+        self.g = g
+       
+       
         # Process RDF graph
         self._extract_nodes(g)
         self._extract_features(g)
         self._assign_features()
         self._extract_edges(g)
         # self._filter_data()
-
         # Assign labels to Person nodes
         self._assign_labels()
         
@@ -295,12 +298,12 @@ class RDFGraphConverter:
         # print(f"[DEBUG] Train nodes: {len(train_indices)}, Test nodes: {len(test_indices)}")
 
                 # Print the first 10 assigned labels for the correct node type
-        print(f"\n[DEBUG] Checking First 10 Assigned Labels for '{target_node_type}':")
-        if target_node_type in self.hetero_data.node_types:
-            for i in range(min(10, len(self.hetero_data[target_node_type].y))):
-                print(f"[DEBUG] Index {i}: Label = {self.hetero_data[target_node_type].y[i].item()}")
-        else:
-            print(f"[DEBUG] ERROR: Node type '{target_node_type}' not found in filtered_hetero_data!")
+        # print(f"\n[DEBUG] Checking First 10 Assigned Labels for '{target_node_type}':")
+        # if target_node_type in self.hetero_data.node_types:
+        #     for i in range(min(10, len(self.hetero_data[target_node_type].y))):
+        #         print(f"[DEBUG] Index {i}: Label = {self.hetero_data[target_node_type].y[i].item()}")
+        # else:
+        #     print(f"[DEBUG] ERROR: Node type '{target_node_type}' not found in filtered_hetero_data!")
 
  
         self._save_processed_data()
@@ -508,257 +511,34 @@ class RDFGraphConverter:
 
 
 
+    def get_namespace_prefixes(self):
+        """
+        Extracts namespace prefixes from node_mapping and RDF edge predicates.
+        Returns a tuple (class_prefix, relation_prefix) as strings.
+        """
+        class_prefix = None
+        relation_prefix = None
 
+        # Extract class prefix from any node
+        for (_, instance_info) in self.node_mapping.items():
+            full_uri = instance_info["full_uri"]
+            if "#" in full_uri:
+                class_prefix = full_uri.split("#")[0] + "#"
+            elif "/" in full_uri:
+                class_prefix = full_uri.rsplit("/", 1)[0] + "/"
+            break
 
-# import os
-# import torch
-# from torch_geometric.data import HeteroData
-# from rdflib import Graph, RDF, RDFS
-# from collections import defaultdict
-# from MiniDataset import MiniDataset  # Import MiniDataset
-# from TransformLabels import TransformLabels
+        # Extract real relation prefix from RDF graph
+        for (source_type, relation, target_type) in self.edge_types:
+            for subj, predicate, obj in self.g:
+                pred_str = str(predicate)
+                if pred_str.endswith(relation):
+                    if "#" in pred_str:
+                        relation_prefix = pred_str.rsplit("#", 1)[0] + "#"
+                    elif "/" in pred_str:
+                        relation_prefix = pred_str.rsplit("/", 1)[0] + "/"
+                    break
+            break
 
-# class RDFGraphConverter:
-#     def __init__(self, dataset_name):
-#         self.dataset_name = dataset_name.lower()
-#         self.hetero_data = HeteroData()
-#         self.node_id_map = {}
-#         self.node_type_map = {}
-#         self.nodes_by_type = defaultdict(set)
-#         self.edge_types = defaultdict(lambda: ([], []))
-#         self.predicate_index_map = defaultdict(dict)
-#         self.node_features = defaultdict(lambda: defaultdict(dict))
-#         self.node_mapping = {}  # Maps (node_type, instance_name) → node index
+        return class_prefix, relation_prefix
 
-#         # Assign relevant classes dynamically based on dataset
-#         self.relevant_classes = self._get_default_relevant_classes()
-
-#     def _get_default_relevant_classes(self):
-#         """Returns default relevant concepts based on the dataset."""
-#         if self.dataset_name == "aifb":
-#             return {
-#                 "Person", "Publication", "InCollection", "InProceedings", "Proceedings",
-#                 "Misc", "TechnicalReport", "Article", "Book", "Organization", "ResearchTopic", "Project"
-#             }
-#         elif self.dataset_name == "mutag":
-#             return {"MutagenicCompound", "Atom", "Bond", "Molecule"}
-#         elif self.dataset_name == "mini":
-#             return {"A", "B", "C"}  # Extract only A, B, C
-#         else:
-#             return set()
-
-#     def load_dataset(self):
-#         """Loads the dataset, processes it, and saves the filtered data."""
-#         if self.dataset_name == "aifb":
-#             g = Graph()
-#             g.parse("data/aifb/raw/aifb_stripped.nt", format="nt")
-#         elif self.dataset_name == "mutag":
-#             g = Graph()
-#             g.parse("data/mutag/raw/mutag_stripped.nt", format="nt")
-#         elif self.dataset_name == "mini":
-#             print("[DEBUG] Loading MiniDataset...")
-#             mini_generator = MiniDataset()
-#             g = mini_generator.get_graph()  # Load RDF graph from MiniDataset
-#         else:
-#             raise ValueError("Unsupported dataset. Choose 'AIFB', 'MUTAG', or 'MINI'.")
-
-#         print("[DEBUG] Extracting Nodes...")
-#         self._extract_nodes(g)
-
-#         print("[DEBUG] Extracting Features...")
-#         self._extract_features(g)
-
-#         print("[DEBUG] Assigning Features to HeteroData...")
-#         self._assign_features()
-
-#         print("[DEBUG] Extracting Edges...")
-#         self._extract_edges(g)
-#         #         # Assign labels to Person nodes
-#         self._assign_labels()
-#         print("[DEBUG] Saving Processed Data...")
-#         self._save_processed_data()
-
-#         return self.hetero_data
-
-#     def _extract_nodes(self, g):
-#         """Extracts nodes while removing namespace prefixes and storing instance names."""
-#         for subject, predicate, obj in g.triples((None, RDF.type, None)):
-#             node_type = obj.split("#")[-1] if "#" in obj else obj.split("/")[-1]  # Extract last part of URI
-            
-#             # Ignore any node type that contains 'class' (case insensitive)
-#             if "class" in node_type.lower():
-#                 print(f"[DEBUG] Skipping node type containing 'class': {node_type} for subject {subject}")
-#                 continue
-
-#             if node_type:
-#                 if subject not in self.node_id_map:
-#                     node_index = len(self.node_id_map)
-#                     self.node_id_map[subject] = node_index
-#                     self.node_type_map[subject] = node_type  # Store clean node type
-#                     self.nodes_by_type[node_type].add(subject)
-
-#                     # Extract instance name from the full URI
-#                     instance_name = subject.split("#")[-1] if "#" in subject else subject.split("/")[-1]
-
-#                     # Store in node_mapping
-#                     self.node_mapping[(node_type, instance_name)] = {
-#                         "node_index": node_index,
-#                         "node_type": node_type,
-#                         "instance_name": instance_name,
-#                         "full_uri": subject
-#                     }
-
-#         print("[DEBUG] Extracted Nodes by Type (without prefixes):")
-#         for node_type, nodes in self.nodes_by_type.items():
-#             print(f" - {node_type}: {len(nodes)} nodes")
-
-#     def _extract_features(self, g):
-#         """Extracts unique features per node type and assigns a fixed order."""
-#         for subject, predicate, obj in g:
-#             if subject in self.node_id_map and not predicate.startswith(str(RDF)):
-#                 predicate_name = str(predicate).split("/")[-1]  # Extract only the last part
-#                 node_type = self.node_type_map[subject]
-#                 if predicate_name not in self.predicate_index_map[node_type]:
-#                     self.predicate_index_map[node_type][predicate_name] = len(self.predicate_index_map[node_type])
-#                 try:
-#                     feature_value = float(obj)
-#                 except ValueError:
-#                     feature_value = hash(obj) % 10000
-#                 self.node_features[node_type][subject][predicate_name] = feature_value
-
-#         print("[DEBUG] Extracted Features:")
-#         for node_type, features in self.predicate_index_map.items():
-#             print(f" - {node_type}: {len(features)} features")
-
-#     def _assign_features(self):
-#         """Assigns extracted features to HeteroData, ensuring 'Class' is not included."""
-#         for node_type, nodes in self.nodes_by_type.items():
-#             if node_type == "Class":  # **Skip 'Class' completely**
-#                 print(f"[DEBUG] Skipping feature assignment for 'Class'")
-#                 continue
-
-#             num_features = len(self.predicate_index_map[node_type])
-#             feature_matrix = []
-#             for node in nodes:
-#                 feature_vector = [0.0] * num_features
-#                 for predicate, index in self.predicate_index_map[node_type].items():
-#                     if predicate in self.node_features[node_type][node]:
-#                         feature_vector[index] = self.node_features[node_type][node][predicate]
-#                 feature_matrix.append(feature_vector)
-
-#             self.hetero_data[node_type].x = torch.tensor(feature_matrix, dtype=torch.float)
-
-#         print("[DEBUG] Assigned Features to HeteroData (excluding 'Class'):")
-#         for node_type in self.hetero_data.node_types:
-#             print(f" - {node_type}: {self.hetero_data[node_type].x.shape}")
-
-
-#     def _extract_edges(self, g):
-#         """Extracts edges while ensuring relationships do not contain namespace prefixes."""
-#         for subject, predicate, obj in g:
-#             if subject in self.node_id_map and obj in self.node_id_map:
-#                 # Extract clean node types
-#                 subject_id = self.node_id_map[subject]
-#                 object_id = self.node_id_map[obj]
-#                 source_type = self.node_type_map[subject]
-#                 target_type = self.node_type_map[obj]
-#                 relation = predicate.split("#")[-1] if "#" in predicate else predicate.split("/")[-1]  # Extract last part
-
-#                 # Ignore `rdf:type` edges where the object is a "class" node
-#                 if "class" in target_type.lower():
-#                     print(f"[DEBUG] Skipping edge ({source_type}, {relation}, {target_type}) because 'class' is in node type")
-#                     continue
-
-#                 edge_key = (source_type, relation, target_type)
-#                 self.edge_types[edge_key][0].append(subject_id)
-#                 self.edge_types[edge_key][1].append(object_id)
-
-#         # Convert to tensor after filtering
-#         for edge_type, (src, dst) in self.edge_types.items():
-#             self.hetero_data[edge_type].edge_index = torch.tensor([src, dst], dtype=torch.long)
-
-#         print("[DEBUG] Extracted Edges (without prefixes):")
-#         for edge_type, (src, dst) in self.edge_types.items():
-#             print(f" - {edge_type}: {len(src)} edges")
-
-
-
-
-#     def _save_processed_data(self):
-#         """Saves the filtered dataset and labels in the respective dataset directory."""
-#         dataset_dir = f"data/{self.dataset_name}/processed"
-#         os.makedirs(dataset_dir, exist_ok=True)
-
-#         # Save the processed HeteroData
-#         torch.save(self.hetero_data, os.path.join(dataset_dir, "hetero_data.pt"))
-
-#         print("[DEBUG] Saved HeteroData.")
-
-#     def get_statistics(self):
-#         """Computes and returns dataset statistics."""
-#         stats = {
-#             "Total Node Types": len(self.nodes_by_type),
-#             "Total Nodes": sum(len(nodes) for nodes in self.nodes_by_type.values()),
-#             "Total Edge Types": len(self.edge_types),
-#             "Total Edges": sum(len(edges[0]) for edges in self.edge_types.values()),
-#         }
-#         print("[DEBUG] Dataset Statistics:", stats)
-#         return stats
-
-#     def _assign_labels(self):
-#         """Assigns labels from both training and test sets, using node_mapping for direct lookup.
-#         Nodes not present in train or test are assigned a label of -1.
-#         Train and test masks are set only for nodes with valid labels."""
-        
-#         train_file = f"data/{self.dataset_name}/raw/trainingSet.tsv"
-#         test_file = f"data/{self.dataset_name}/raw/testSet.tsv"
-
-#         label_transformer = TransformLabels(self.dataset_name)
-#         train_df, test_df = label_transformer.assign_labels(train_file, test_file)
-
-#         target_node_type = "Person" if self.dataset_name == "aifb" else "MutagenicCompound"
-#         target_nodes = list(self.nodes_by_type.get(target_node_type, []))
-
-#         print(f"[DEBUG] Total nodes found for '{target_node_type}': {len(target_nodes)}")
-
-#         # Initialize labels with -1 for all nodes
-#         labels = torch.full((len(target_nodes),), -1, dtype=torch.long)
-
-#         # Initialize masks based on label assignments
-#         train_mask = torch.zeros(len(target_nodes), dtype=torch.bool)
-#         test_mask = torch.zeros(len(target_nodes), dtype=torch.bool)
-
-#         for dataset, df in [("train", train_df), ("test", test_df)]:
-#             for _, row in df.iterrows():
-#                 raw_instance = str(row["person"]).strip() if "person" in row else str(row["compound"]).strip()
-#                 instance_name = raw_instance.split("#")[-1] if "#" in raw_instance else raw_instance.split("/")[-1]
-
-#                 print(f"[DEBUG] Checking instance_name mapping: {instance_name}")
-
-#                 if (target_node_type, instance_name) in self.node_mapping:
-#                     node_info = self.node_mapping[(target_node_type, instance_name)]
-#                     node_index = node_info["node_index"]
-
-#                     print(f"[DEBUG] Assigning label {row['new_label']} to node {instance_name} (index {node_index})")
-
-#                     # Assign label
-#                     labels[node_index] = row["new_label"]
-
-#                     # Assign mask based on dataset type
-#                     if dataset == "train":
-#                         train_mask[node_index] = True
-#                     elif dataset == "test":
-#                         test_mask[node_index] = True
-#                 else:
-#                     print(f"[DEBUG] WARNING: '{instance_name}' not found in node_mapping!")
-
-#         # Ensure target node type exists before assigning labels
-#         if target_node_type in self.hetero_data:
-#             self.hetero_data[target_node_type].y = labels
-#             self.hetero_data[target_node_type].train_mask = train_mask
-#             self.hetero_data[target_node_type].test_mask = test_mask
-
-#             print(f"[DEBUG] Final assigned labels for {target_node_type}: {labels.tolist()}")
-#             print(f"[DEBUG] Train mask count: {train_mask.sum().item()}, Test mask count: {test_mask.sum().item()}")
-#         else:
-#             print(f"[DEBUG] ERROR: {target_node_type} not found in hetero_data!")
