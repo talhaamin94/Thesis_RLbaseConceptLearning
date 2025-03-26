@@ -44,10 +44,38 @@ class RLTrainer:
             self.trainer.node_mapping[(self.node_type, local_id)]
             for local_id in self.local_positive_nodes
         }
-        self.best_expression = None
-        self.best_reward = float('-inf')
-        self.generated_expressions = []
- 
+       
+        self.episode_rewards = []
+        self.run_log = {
+            "timestamp": datetime.datetime.now().isoformat(),
+            "episodes": []
+        }
+
+    # def calculate_logical_expression(self):
+    #     expressions = []
+
+    #     for path in self.env.tracked_paths:
+    #         if len(path) < 1:
+    #             continue
+
+    #         parts = []
+    #         for src, edge_type, dst, src_local, dst_local in path:
+    #             relation = edge_type[1]           # e.g., "related_to"
+    #             target_type = dst_local[0]        # e.g., "C"
+
+    #             prop_iri = IRI.create(self.relation_prefix + relation)
+    #             class_iri = IRI.create(self.class_prefix + target_type)
+
+    #             prop = OWLObjectProperty(prop_iri)
+    #             target = OWLClass(class_iri)
+    #             parts.append(OWLObjectSomeValuesFrom(prop, target))
+
+    #         if parts:
+    #             expression = OWLObjectIntersectionOf(parts) if len(parts) > 1 else parts[0]
+    #             expressions.append(expression)
+
+    #     return expressions
+
 
     def calculate_reward(self, typed_path):
         labeled_nodes = set(self.gnn_trainer.get_positive_nodes()) | set(self.gnn_trainer.get_negative_nodes())
@@ -257,9 +285,13 @@ class RLTrainer:
         # print(f"[DEBUG] Final Nested Expression: {self.renderer.render(expr)}")
         return expr
 
-    def train(self):
-        for episode in range(self.num_episodes):
-            # Pick a valid starting node that has neighbors
+    def test(self, num_tests=10):
+        print("\n--- Testing Learned Policy ---")
+        best_reward = -1
+        best_expression = None
+        generated_expressions = []
+
+        for test_num in range(num_tests):
             while True:
                 start_node = int(np.random.choice(list(self.global_positive_nodes)))
                 neighbors = self.env.get_neighbors(start_node)
@@ -268,18 +300,15 @@ class RLTrainer:
 
             self.env.reset(start_node)
 
-            episode_states, episode_actions, rewards = [], [], []
-
             for _ in range(self.roll_out):
                 current_state = self.env.get_state_embedding()
                 neighbors = self.env.get_neighbors(self.env.current_node)
 
                 if not neighbors:
-                    print(f"Dead-end reached at node {self.env.current_node}. Ending episode early.")
                     break
 
-                neighbor_nodes = [n for n, _ in neighbors]
                 action_probs = self.policy_net.forward(current_state).detach().numpy().flatten()
+                neighbor_nodes = [n for n, _ in neighbors]
                 neighbor_indices = [n for n in neighbor_nodes if 0 <= n < len(action_probs)]
 
                 if neighbor_indices:
@@ -293,39 +322,19 @@ class RLTrainer:
                     chosen_node = np.random.choice(neighbor_nodes)
 
                 action_node, action_edge = next((n, et) for n, et in neighbors if n == chosen_node)
-                episode_states.append(current_state)
-                episode_actions.append(action_node)
                 self.env.step(action_node, action_edge)
 
-            # After rollout ends, compute reward and update
-            if episode_states:
-                action_batch = torch.tensor(episode_actions, dtype=torch.long)
-                state_batch = torch.stack(episode_states)
-
-                reward, expr = self.calculate_reward(self.env.typed_path)
-                rewards.append(reward)
-
-                returns = torch.tensor([sum(rewards[i:]) for i in range(len(rewards))], dtype=torch.float32)
-                self.policy_net.update(state_batch, action_batch, returns)
-
-                self.episode_rewards.append(reward)
-                self.run_log["episodes"].append({
-                    "episode": episode + 1,
-                    "reward": reward
-                })
-
-                self.env.tracked_paths.append(self.env.typed_path.copy())
-                self.generated_expressions.append(expr)
-
-                if reward > self.best_reward:
-                    self.best_reward = reward
-                    self.best_expression = expr
-
+            reward, expr = self.calculate_reward(self.env.typed_path)
             readable_expr = self.renderer.render(expr) if expr else "None"
-            print(f"Episode {episode + 1}/{self.num_episodes}: Expression = {readable_expr}, Reward = {reward}")
+            print(f"Test {test_num + 1}/{num_tests}: Expression = {readable_expr}, Reward = {reward:.4f}")
 
-        # Final report
-        final_expr = self.renderer.render(self.best_expression) if self.best_expression else "None"
-        print(f"\n=== Best Expression ===\n{final_expr}\nReward = {self.best_reward:.4f}")
+            generated_expressions.append(expr)
 
-        return self.generated_expressions
+            if reward > best_reward:
+                best_reward = reward
+                best_expression = expr
+
+        final_expr = self.renderer.render(best_expression) if best_expression else "None"
+        print(f"\n=== Best Expression During Testing ===\n{final_expr}\nReward = {best_reward:.4f}")
+
+        return generated_expressions
