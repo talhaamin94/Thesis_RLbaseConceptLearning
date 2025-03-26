@@ -121,6 +121,7 @@ class Evaluator:
         Returns:
             A set of nodes which are the result of the evaluation.
         """
+  
         return self.owl_mapping[type(logical_formula)](logical_formula)
 
     def _eval_complement(self, logical_formula: OWLObjectComplementOf) -> set[tuple[int, str]]:
@@ -168,20 +169,17 @@ class Evaluator:
         return result
 
     def _eval_existential(self, logical_formula: OWLObjectSomeValuesFrom) -> set[tuple[int, str]]:
-        """
-        Evaluates the given existential based on the given dataset and returns the set of matching nodes.
-        Args:
-            logical_formula: The existential restriction which should be evaluated.
-
-        Returns:
-            A set of nodes which are the result of the evaluation.
-        """
         dest = self._eval_formula(logical_formula.get_filler())
-        edge_type = self._eval_property(logical_formula.get_property())
-        dest_first_elements = np.array([b[0] for b in dest])
-        selection = np.isin(self.data[edge_type]['edge_index'][1].cpu(), dest_first_elements)
-        origin = self.data[edge_type]['edge_index'][0][selection].cpu().numpy()
-        return set(zip(origin, [edge_type[0], ] * len(origin)))
+        edge_types = self._eval_property(logical_formula.get_property())
+        dest_first_elements = np.array([int(b[0]) for b in dest])
+
+        result = set()
+        for edge_type in edge_types:
+            selection = np.isin(self.data[edge_type]['edge_index'][1].cpu(), dest_first_elements)
+            origin = self.data[edge_type]['edge_index'][0][selection].cpu().numpy()
+            result.update((int(idx), edge_type[0]) for idx in origin)
+
+        return result
 
     def _eval_object_one_of(self, logical_formula: OWLObjectOneOf) -> set[tuple[int, str]]:
         """
@@ -368,9 +366,7 @@ class Evaluator:
         Returns:
             The edge type which is the result of the evaluation.
         """
-        for i in self.data.edge_types:
-            if i[1] == property.iri.get_remainder():
-                return i
+        return [et for et in self.data.edge_types if et[1] == property.iri.get_remainder()]
 
     def _get_nodeset(self, node_types: list[str] = None) -> set[tuple[int, str]]:
         """

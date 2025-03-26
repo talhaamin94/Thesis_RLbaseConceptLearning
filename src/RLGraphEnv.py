@@ -34,12 +34,13 @@ class RLGraphEnv:
         return self.get_state_embedding()
 
     def step(self, action_node, edge_type):
-        print(f"Moving from node {self.current_node} to node {action_node} via edge {edge_type}")
+        # print(f"Moving from node {self.current_node} to node {action_node} via edge {edge_type}")
 
         src_local = self.trainer.global_to_node[self.current_node]
         dst_local = self.trainer.global_to_node[action_node]
 
         self.typed_path.append((self.current_node, edge_type, action_node, src_local, dst_local))
+        print(self.typed_path)
         self.path.append(action_node)
         self.current_node = action_node
 
@@ -48,7 +49,7 @@ class RLGraphEnv:
 
     def get_neighbors(self, node_global):
         neighbors = []
-
+       
         if node_global not in self.trainer.global_to_node:
             return []
 

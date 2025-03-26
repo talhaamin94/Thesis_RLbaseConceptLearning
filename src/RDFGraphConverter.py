@@ -251,7 +251,8 @@ class RDFGraphConverter:
         target_node_type = "Person" if self.dataset_name == "aifb" else "MutagenicCompound"
         target_nodes = list(self.nodes_by_type.get(target_node_type, []))
 
-        labels = torch.zeros(len(target_nodes), dtype=torch.long)
+        labels = torch.full((len(target_nodes),), -1, dtype=torch.long)  # -1 means unlabeled
+
         train_indices = []
         test_indices = []
 
@@ -406,7 +407,7 @@ class RDFGraphConverter:
     def _assign_labels(self):
         """Unified label assignment function that calls the appropriate method for the dataset."""
         
-        print("[INFO] Assigning labels for dataset:", self.dataset_name)
+        # print("[INFO] Assigning labels for dataset:", self.dataset_name)
 
         if self.dataset_name == "mini":
             self._assign_labels_to_mini()
@@ -415,7 +416,7 @@ class RDFGraphConverter:
         else:
             raise ValueError(f"[ERROR] Unsupported dataset: {self.dataset_name}")
 
-        print("[SUCCESS] Label assignment completed for dataset:", self.dataset_name)
+        # print("[SUCCESS] Label assignment completed for dataset:", self.dataset_name)
 
     def get_statistics(self):
         """Computes and returns dataset statistics before and after filtering."""

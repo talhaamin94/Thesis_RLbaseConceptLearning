@@ -58,7 +58,7 @@ class TransETrainer:
         self.node_mapping = {}  # (node_type, local_index) -> global_index
         self.global_to_node = {}  # global_index -> (node_type, local_index)
         global_index = 0  
-
+        person_nodes = []
         for node_type in self.hetero_data.node_types:
             num_nodes = self.hetero_data[node_type].x.shape[0] if hasattr(self.hetero_data[node_type], "x") else 0
             for local_idx in range(num_nodes):
@@ -66,10 +66,9 @@ class TransETrainer:
                 self.global_to_node[global_index] = (node_type, local_idx)  # Reverse mapping
                 unique_nodes.add(global_index)
                 global_index += 1  # Increment global index
-
         unique_nodes = sorted(list(unique_nodes))  # Ensure sorted list
         node_to_index = {node: i for i, node in enumerate(unique_nodes)}
-
+        # print(f"Person nodes: {person_nodes}")
         unique_edges = []
         for edge_type in self.hetero_data.edge_types:
             edge_index = self.hetero_data[edge_type].edge_index
@@ -131,52 +130,6 @@ class TransETrainer:
 
         print(f"Embeddings saved:\n - Nodes: {self.node_embeddings_path}\n - Relations: {self.relation_embeddings_path}\n - Edges: {self.edge_embeddings_path}")
     
-    # def adversarial_loss(self, pos_scores, neg_scores, alpha=0.5):
-    #     neg_weights = torch.softmax(-alpha * neg_scores, dim=-1)
-    #     weighted_neg_loss = torch.sum(neg_weights * neg_scores, dim=0)  # Fix dimension issue
-
-    #     # Ensure shapes are aligned
-    #     if weighted_neg_loss.dim() == 0:  
-    #         weighted_neg_loss = weighted_neg_loss.unsqueeze(0)  # Convert scalar to 1D tensor
-
-    #     return self.loss_fn(pos_scores, weighted_neg_loss, torch.ones_like(pos_scores))
-
-
-    # def _evaluate(self):
-    #     """Computes evaluation metrics (MR, MRR, Hits@K)."""
-    #     self.transe_model.eval()
-    #     ranks = []
-
-    #     for (head, relation, tail) in self.unique_edges:
-    #         head_idx = torch.tensor([self.node_to_index[head]])
-    #         relation_idx = torch.tensor([self.relation_to_index[relation]])
-    #         tail_idx = torch.tensor([self.node_to_index[tail]])
-
-    #         correct_score = self.transe_model.score(head_idx, relation_idx, tail_idx).item()
-    #         all_tail_indices = torch.arange(self.num_entities)
-    #         all_scores = self.transe_model.score(head_idx.repeat(self.num_entities), relation_idx.repeat(self.num_entities), all_tail_indices)
-
-    #         sorted_scores, sorted_indices = torch.sort(all_scores, descending=True)
-    #         rank = (sorted_indices == tail_idx).nonzero(as_tuple=True)[0].item() + 1
-
-    #         ranks.append(rank)
-
-    #     MR = np.mean(ranks)
-    #     MRR = np.mean([1.0 / r for r in ranks])
-    #     Hits_1 = np.mean([1 if r <= 1 else 0 for r in ranks])
-    #     Hits_3 = np.mean([1 if r <= 3 else 0 for r in ranks])
-    #     Hits_10 = np.mean([1 if r <= 10 else 0 for r in ranks])
-
-    #     with open(self.metrics_path, "w") as f:
-    #         f.write(f"Mean Rank (MR): {MR:.2f}\n")
-    #         f.write(f"Mean Reciprocal Rank (MRR): {MRR:.4f}\n")
-    #         f.write(f"Hits@1: {Hits_1:.4f}\n")
-    #         f.write(f"Hits@3: {Hits_3:.4f}\n")
-    #         f.write(f"Hits@10: {Hits_10:.4f}\n")
-
-    #     # print("Evaluation complete.")
-    #     return MRR
-
     def _evaluate(self):
         self.normalize_embeddings()
         self.transe_model.eval()

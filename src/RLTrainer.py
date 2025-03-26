@@ -13,96 +13,91 @@ from PolicyNetwork import PolicyNetwork
 from owlapy.class_expression import OWLClass, OWLObjectSomeValuesFrom, OWLObjectIntersectionOf
 from owlapy.owl_property import OWLObjectProperty
 from owlapy.iri import IRI
-from owlapy.render import ManchesterOWLSyntaxOWLObjectRenderer
+from owlapy.render import DLSyntaxObjectRenderer
+
+
 
 class RLTrainer:
-    def __init__(self, hetero_data, node_type,class_prefix, relation_prefix,num_episodes=100, roll_out=3):
+    def __init__(self, hetero_data, node_type, class_prefix, relation_prefix, gnn_trainer, transe_trainer, num_episodes=100, roll_out=2):
         self.class_prefix = class_prefix
         self.relation_prefix = relation_prefix
         self.hetero_data = hetero_data
         self.node_type = node_type
         self.num_episodes = num_episodes
         self.roll_out = roll_out  # New: Configurable rollout value
-        self.trainer = TransETrainer(hetero_data)
-        self.gnn_trainer = GNNTrainer(hetero_data, node_type=node_type)
 
-        self.trainer.train()
-        self.gnn_trainer.run_training()
-
+        self.gnn_trainer = gnn_trainer
+        self.trainer = transe_trainer
         self.env = RLGraphEnv(hetero_data, self.trainer)
 
         self.state_dim = self.trainer.transe_model.entity_embeddings.weight.shape[1] * 2
         self.policy_net = PolicyNetwork(self.state_dim, len(self.trainer.node_mapping))
-        self.renderer = ManchesterOWLSyntaxOWLObjectRenderer()
+        self.renderer = DLSyntaxObjectRenderer()
 
         # self.positive_nodes = self.gnn_trainer.get_positive_nodes()
-        self.positive_nodes = {
+
+        # print(self.positive_nodes)
+        # if not self.positive_nodes:
+        #     self.positive_nodes = list(self.trainer.global_to_node.keys())
+        self.local_positive_nodes = set(self.gnn_trainer.get_positive_nodes())
+        self.global_positive_nodes = {
             self.trainer.node_mapping[(self.node_type, local_id)]
-            for local_id in self.gnn_trainer.get_positive_nodes()
+            for local_id in self.local_positive_nodes
         }
-        print(self.positive_nodes)
-        if not self.positive_nodes:
-            self.positive_nodes = list(self.trainer.global_to_node.keys())
-
-        self.episode_rewards = []
-        self.run_log = {
-            "timestamp": datetime.datetime.now().isoformat(),
-            "episodes": []
-        }
-    def calculate_logical_expression(self):
-        expressions = []
-
-        for path in self.env.tracked_paths:
-            if len(path) < 1:
-                continue
-
-            parts = []
-            for src, edge_type, dst, src_local, dst_local in path:
-                relation = edge_type[1]           # e.g., "related_to"
-                target_type = dst_local[0]        # e.g., "C"
-
-                prop_iri = IRI.create(self.relation_prefix + relation)
-                class_iri = IRI.create(self.class_prefix + target_type)
-
-                prop = OWLObjectProperty(prop_iri)
-                target = OWLClass(class_iri)
-                parts.append(OWLObjectSomeValuesFrom(prop, target))
-
-            if parts:
-                expression = OWLObjectIntersectionOf(parts) if len(parts) > 1 else parts[0]
-                expressions.append(expression)
-
-        return expressions
-
+        self.best_expression = None
+        self.best_reward = float('-inf')
+        self.generated_expressions = []
+ 
 
     def calculate_reward(self, typed_path):
-        """
-        Computes the reward for the current episode's typed_path.
-        """
-        labeled_nodeset = set(self.gnn_trainer.get_positive_nodes()) | set(self.gnn_trainer.get_negative_nodes())
-        evaluator = Evaluator(self.hetero_data, labeled_nodeset=labeled_nodeset)
-
-        logical_expr = self.build_logical_expression(typed_path)  # <- Use only the current path
-
+        labeled_nodes = set(self.gnn_trainer.get_positive_nodes()) | set(self.gnn_trainer.get_negative_nodes())
+        evaluator = Evaluator(self.hetero_data, labeled_nodeset=labeled_nodes)
+        
+        logical_expr = self.build_logical_expression(typed_path)
         if logical_expr is None:
-            return 0.0
+            print("No logical expression generated.")
+            return 0.0, None
 
-        precision, recall, accuracy = evaluator.explanation_accuracy(
-            set(self.gnn_trainer.get_positive_nodes()), logical_expr
-        )
+        # Evaluate and normalize expr_nodes
+        raw_expr_nodes = evaluator._eval_formula(logical_expr)
+        expr_nodes = {(int(idx), ntype) for idx, ntype in raw_expr_nodes}  # <-- Normalize np.int64 to int
+
+        positive_nodes = {(int(idx), self.node_type) for idx in self.local_positive_nodes}
+        negative_nodes = {(int(idx), self.node_type) for idx in self.gnn_trainer.get_negative_nodes()}
+
+        # Continue as usual
+        true_positives = expr_nodes & positive_nodes
+        true_negatives = negative_nodes - expr_nodes
+        false_positives = expr_nodes & negative_nodes
+        false_negatives = positive_nodes - expr_nodes
+
+        reward = round((len(true_positives) + len(true_negatives)) / len(labeled_nodes),4)
+
+        # Debug Output
         rendered_expr = self.renderer.render(logical_expr)
-        print("Typed path used for reward:", typed_path)
-        print("Generated expression:", rendered_expr)
-        return accuracy
+        # print(f"Expression matched nodes: {len(expr_nodes)} -> {expr_nodes}")
+        # print(f"Positive nodes: {len(positive_nodes)} -> {positive_nodes}")
+        # print(f"Negative nodes: {len(negative_nodes)} -> {negative_nodes}")
+        # print(f"True Positives (TP): {len(true_positives)}")
+        # print(f"True Negatives (TN): {len(true_negatives)}")
+        # print(f"False Positives (FP): {len(false_positives)}")
+        # print(f"False Negatives (FN): {len(false_negatives)}")
+        # print(f"Total Labeled Nodes: {len(labeled_nodes)}")
+        # print(f"Reward: {reward:.4f}")
+        # print(f"------------------------\n")
+
+        return reward, logical_expr
 
 
     def train(self):
-        print("Starting RL with positive nodes:", self.positive_nodes)
+        # print("Starting RL with positive nodes:", self.positive_nodes)
 
         for episode in range(self.num_episodes):
             # Pick a valid starting node that has neighbors
             while True:
-                start_node = np.random.choice(list(self.positive_nodes))
+                start_node = int(np.random.choice(list(self.global_positive_nodes)))
+
+                
                 neighbors = self.env.get_neighbors(start_node)
                 if neighbors:
                     break
@@ -110,7 +105,7 @@ class RLTrainer:
             self.env.reset(start_node)
 
             episode_states, episode_actions, rewards = [], [], []
-
+            
             for _ in range(self.roll_out):
                 current_state = self.env.get_state_embedding()
                 neighbors = self.env.get_neighbors(self.env.current_node)
@@ -139,14 +134,15 @@ class RLTrainer:
                 episode_states.append(current_state)
                 episode_actions.append(action_node)
 
-                next_state, _ = self.env.step(action_node, action_edge)  # Let rollout length decide end
+                self.env.step(action_node, action_edge)
 
             # After rollout ends, compute reward and update
             if episode_states:
                 action_batch = torch.tensor(episode_actions, dtype=torch.long)
                 state_batch = torch.stack(episode_states)
 
-                reward = self.calculate_reward(self.env.typed_path)
+                reward, expr = self.calculate_reward(self.env.typed_path)
+
                 rewards.append(reward)
 
                 returns = torch.tensor([sum(rewards[i:]) for i in range(len(rewards))], dtype=torch.float32)
@@ -154,20 +150,21 @@ class RLTrainer:
 
                 self.episode_rewards.append(reward)
                 self.run_log["episodes"].append({
-                    "typed_path": self.env.typed_path.copy(),
+                    # "typed_path": self.env.typed_path.copy(),
                     "episode": episode + 1,
-                    "path": self.env.path.copy(),
+                    # "path": self.env.path.copy(),
                     "reward": reward
                 })
 
                 # Add final typed_path to tracked_paths
                 self.env.tracked_paths.append(self.env.typed_path.copy())
 
-            print(f"Episode {episode + 1}/{self.num_episodes}: Path Taken = {self.env.path}, Reward = {reward}")
+            readable_expr = self.renderer.render(expr) if expr else "None"
+            print(f"Episode {episode + 1}/{self.num_episodes}: Expression = {readable_expr}, Reward = {reward}")
 
         # Save logical expressions
-        self.get_logical_expressions()
-        self.save_logical_expressions()
+        # self.get_logical_expressions()
+        # self.save_logical_expressions()
 
 
 
@@ -223,26 +220,112 @@ class RLTrainer:
         print(f"Logical expressions saved to {filepath}")
 
     def build_logical_expression(self, typed_path):
-        """
-        Builds a single OWL logical expression from a single typed path.
+        """ 
+        Builds a nested OWL logical expression from a single typed path.
         """
         if not typed_path:
+            # print("[DEBUG] Empty typed_path — returning None")
             return None
 
-        parts = []
-        for _, edge_type, _, _, dst_local in typed_path:
+        # print("[DEBUG] Building nested logical expression from typed path:")
+        
+        # Start from the last node and build nested expressions backwards
+        expr = None
+        for step in reversed(typed_path):
+            src, edge_type, dst, src_local, dst_local = step
+
             relation = edge_type[1]
             target_type = dst_local[0]
 
-            prop_iri = IRI.create(self.relation_prefix + relation)
-            class_iri = IRI.create(self.class_prefix + target_type)
+            prop_iri = self.relation_prefix + relation
+            class_iri = self.class_prefix + target_type
 
-            prop = OWLObjectProperty(prop_iri)
-            target = OWLClass(class_iri)
+            # print(f" - Relation: {relation} -> IRI: {prop_iri}")
+            # print(f" - Target Type: {target_type} -> IRI: {class_iri}")
 
-            parts.append(OWLObjectSomeValuesFrom(prop, target))
+            prop = OWLObjectProperty(IRI.create(prop_iri))
+            target_class = OWLClass(IRI.create(class_iri))
 
-        if not parts:
-            return None
+            if expr is None:
+                expr = OWLObjectSomeValuesFrom(prop, target_class)
+            else:
+                # Nest the previous expression inside the current one
+                expr = OWLObjectSomeValuesFrom(prop, OWLObjectIntersectionOf([target_class, expr]))
 
-        return OWLObjectIntersectionOf(parts) if len(parts) > 1 else parts[0]
+            # print(f"   Current Nested Expression: {self.renderer.render(expr)}")
+
+        # print(f"[DEBUG] Final Nested Expression: {self.renderer.render(expr)}")
+        return expr
+
+    def train(self):
+        for episode in range(self.num_episodes):
+            # Pick a valid starting node that has neighbors
+            while True:
+                start_node = int(np.random.choice(list(self.global_positive_nodes)))
+                neighbors = self.env.get_neighbors(start_node)
+                if neighbors:
+                    break
+
+            self.env.reset(start_node)
+
+            episode_states, episode_actions, rewards = [], [], []
+
+            for _ in range(self.roll_out):
+                current_state = self.env.get_state_embedding()
+                neighbors = self.env.get_neighbors(self.env.current_node)
+
+                if not neighbors:
+                    print(f"Dead-end reached at node {self.env.current_node}. Ending episode early.")
+                    break
+
+                neighbor_nodes = [n for n, _ in neighbors]
+                action_probs = self.policy_net.forward(current_state).detach().numpy().flatten()
+                neighbor_indices = [n for n in neighbor_nodes if 0 <= n < len(action_probs)]
+
+                if neighbor_indices:
+                    valid_probs = action_probs[neighbor_indices]
+                    if valid_probs.sum() > 0:
+                        valid_probs /= valid_probs.sum()
+                        chosen_node = np.random.choice(neighbor_indices, p=valid_probs)
+                    else:
+                        chosen_node = np.random.choice(neighbor_indices)
+                else:
+                    chosen_node = np.random.choice(neighbor_nodes)
+
+                action_node, action_edge = next((n, et) for n, et in neighbors if n == chosen_node)
+                episode_states.append(current_state)
+                episode_actions.append(action_node)
+                self.env.step(action_node, action_edge)
+
+            # After rollout ends, compute reward and update
+            if episode_states:
+                action_batch = torch.tensor(episode_actions, dtype=torch.long)
+                state_batch = torch.stack(episode_states)
+
+                reward, expr = self.calculate_reward(self.env.typed_path)
+                rewards.append(reward)
+
+                returns = torch.tensor([sum(rewards[i:]) for i in range(len(rewards))], dtype=torch.float32)
+                self.policy_net.update(state_batch, action_batch, returns)
+
+                self.episode_rewards.append(reward)
+                self.run_log["episodes"].append({
+                    "episode": episode + 1,
+                    "reward": reward
+                })
+
+                self.env.tracked_paths.append(self.env.typed_path.copy())
+                self.generated_expressions.append(expr)
+
+                if reward > self.best_reward:
+                    self.best_reward = reward
+                    self.best_expression = expr
+
+            readable_expr = self.renderer.render(expr) if expr else "None"
+            print(f"Episode {episode + 1}/{self.num_episodes}: Expression = {readable_expr}, Reward = {reward}")
+
+        # Final report
+        final_expr = self.renderer.render(self.best_expression) if self.best_expression else "None"
+        print(f"\n=== Best Expression ===\n{final_expr}\nReward = {self.best_reward:.4f}")
+
+        return self.generated_expressions

@@ -9,6 +9,12 @@ from MiniDataset import MiniDataset
 from TransETrainer import TransETrainer
 from RLTrainer import RLTrainer
 import time
+from Evaluator import Evaluator
+from owlapy.class_expression import OWLClass, OWLObjectSomeValuesFrom, OWLObjectIntersectionOf
+from owlapy.owl_property import OWLObjectProperty
+from owlapy.iri import IRI
+from owlapy.render import DLSyntaxObjectRenderer
+
 # Load dataset
 # converter = RDFGraphConverter("AIFB")
 # hetero_data = converter.load_dataset()
@@ -141,11 +147,20 @@ def inspect_node_connections(data, node_type, node_local_index):
 # print(f"\nHyperparameter tuning results saved to: {results_save_path}")
 
 # Train and evaluate the GNN model
-converter = RDFGraphConverter("aifb")
+node_type = "Person"
+dataset = "aifb"
+# node_type = "A"
+# dataset = "mini"
+converter = RDFGraphConverter(dataset)
 hetero_data = converter.load_dataset()
 class_prefix, relation_prefix = converter.get_namespace_prefixes()
 
+trainer = TransETrainer(hetero_data,num_epochs=2000)
+gnn_trainer = GNNTrainer(hetero_data, node_type=node_type)
+gnn_trainer.run_training()
+trainer.train()
 
-# inspect_node_connections(hetero_data, "Person", 128)
-rlagent = RLTrainer(hetero_data,"Person",class_prefix,relation_prefix,20)
+
+rlagent = RLTrainer(hetero_data,node_type,class_prefix,relation_prefix,gnn_trainer,trainer,50)
 rlagent.train()
+rlagent.test()
