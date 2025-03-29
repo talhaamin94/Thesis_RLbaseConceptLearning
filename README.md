@@ -67,7 +67,7 @@ You do **not** need to manually download any datasets.
 ## Dataset References
 
 - **AIFB**:  
-  [RDF Benchmarking for Machine Learning](https://link.springer.com/chapter/10.1007/978-3-319-46547-0_4)
+  [Kernel Methods for Mining Instance Data in Ontologies](https://link.springer.com/chapter/10.1007/978-3-540-76298-0_5)
 
 - **MUTAG**:  
   [Toxicity Prediction Using Graph Kernels](https://link.springer.com/chapter/10.1007/3-540-44673-7_34)
