@@ -72,7 +72,7 @@ You do **not** need to manually download any datasets.
 - **MUTAG**:  
   [Toxicity Prediction Using Graph Kernels](https://link.springer.com/chapter/10.1007/3-540-44673-7_34)
 
-  ## Output
+## Output
 
 Results of walk-based explanation evaluations are saved in:
 
