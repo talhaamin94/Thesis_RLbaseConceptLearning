@@ -167,11 +167,17 @@ class TransETrainer:
             f.write(f"Hits@10: {Hits_10:.4f}\n")
 
 
-        print(f"Evaluation complete. MRR: {MRR:.4f}, Hits@1: {Hits_1:.4f}, Hits@10: {Hits_10:.4f}")
+        # print(f"Evaluation complete. MRR: {MRR:.4f}, Hits@1: {Hits_1:.4f}, Hits@10: {Hits_10:.4f}")
 
-        return MRR
+        return {
+            "MR": MR,
+            "MRR": MRR,
+            "Hits@1": Hits_1,
+            "Hits@3": Hits_3,
+            "Hits@10": Hits_10
+        }
 
-    def train(self):
+    def train(self, eval = True):
         print("Training TransE")
 
         train_edges = torch.tensor([(self.node_to_index[h], self.relation_to_index[r], self.node_to_index[t]) 
@@ -202,16 +208,17 @@ class TransETrainer:
             # Reduce learning rate if needed
             # self.scheduler.step(loss.item())  # Ensure loss is converted to float
 
-            # Print loss every 10 epochs  (low overhead)
-            if epoch % 10 == 0:
-                print(f"Epoch {epoch}: Loss = {loss.item():.4f}")
+            # # Print loss every 10 epochs  (low overhead)
+            # if epoch % 10 == 0:
+            #     print(f"Epoch {epoch}: Loss = {loss.item():.4f}")
 
 
 
-        # Final MRR evaluation after 500 epochs 
-        final_mrr = self._evaluate()
-        print(f"Final MRR after training: {final_mrr:.4f}")
-
+        if eval:
+            metrics = self._evaluate()
+            return metrics
+        else:
+            return False
 
     
     

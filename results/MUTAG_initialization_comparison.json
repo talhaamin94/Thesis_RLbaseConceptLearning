@@ -1,0 +1,1030 @@
+{
+    "RL": {
+        "best_expression": "\u2203 hasAtom.Sulfur-76",
+        "best_reward": 0.5824,
+        "average_reward": 0.3981,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 0.3882,
+                "expression": "\u2203 hasAtom.Oxygen-50"
+            },
+            {
+                "index": 1,
+                "reward": 0.3882,
+                "expression": "\u2203 hasAtom.Hydrogen-8"
+            },
+            {
+                "index": 2,
+                "reward": 0.4206,
+                "expression": "\u2203 hasStructure.Ester"
+            },
+            {
+                "index": 3,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 4,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Hydrogen-3))"
+            },
+            {
+                "index": 5,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Carbon-10))"
+            },
+            {
+                "index": 6,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Non_ar_hetero_5_ring"
+            },
+            {
+                "index": 7,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 8,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 9,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Hydrogen-3))"
+            },
+            {
+                "index": 10,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Carbon-10))"
+            },
+            {
+                "index": 11,
+                "reward": 0.5824,
+                "expression": "\u2203 hasAtom.Sulfur-76"
+            },
+            {
+                "index": 12,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Carbon-10))"
+            },
+            {
+                "index": 13,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Non_ar_hetero_5_ring"
+            },
+            {
+                "index": 14,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Amine"
+            },
+            {
+                "index": 15,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 16,
+                "reward": 0.3853,
+                "expression": "\u2203 hasBond.(Bond-7 \u2293 (\u2203 inBond.Carbon-22))"
+            },
+            {
+                "index": 17,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 18,
+                "reward": 0.4206,
+                "expression": "\u2203 hasStructure.Ester"
+            },
+            {
+                "index": 19,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 20,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-22"
+            },
+            {
+                "index": 21,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 22,
+                "reward": 0.4206,
+                "expression": "\u2203 hasStructure.Ester"
+            },
+            {
+                "index": 23,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Carbon-22))"
+            },
+            {
+                "index": 24,
+                "reward": 0.3853,
+                "expression": "\u2203 hasBond.(Bond-7 \u2293 (\u2203 inBond.Carbon-22))"
+            },
+            {
+                "index": 25,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-22"
+            },
+            {
+                "index": 26,
+                "reward": 0.4235,
+                "expression": "\u2203 hasAtom.Bromine-94"
+            },
+            {
+                "index": 27,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 28,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 29,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 30,
+                "reward": 0.5824,
+                "expression": "\u2203 hasStructure.Di227"
+            },
+            {
+                "index": 31,
+                "reward": 0.3853,
+                "expression": "\u2203 hasBond.(Bond-7 \u2293 (\u2203 inBond.Carbon-22))"
+            },
+            {
+                "index": 32,
+                "reward": 0.3912,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Sulfur-74))"
+            },
+            {
+                "index": 33,
+                "reward": 0.3853,
+                "expression": "\u2203 hasBond.(Bond-7 \u2293 (\u2203 inBond.Carbon-22))"
+            },
+            {
+                "index": 34,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Carbon-10))"
+            },
+            {
+                "index": 35,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 36,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-10"
+            },
+            {
+                "index": 37,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Five_ring"
+            },
+            {
+                "index": 38,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ar_halide"
+            },
+            {
+                "index": 39,
+                "reward": 0.4088,
+                "expression": "\u2203 hasAtom.Carbon-27"
+            },
+            {
+                "index": 40,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Non_ar_6c_ring"
+            },
+            {
+                "index": 41,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-22"
+            },
+            {
+                "index": 42,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 43,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Hydrogen-3))"
+            },
+            {
+                "index": 44,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Hydrogen-3))"
+            },
+            {
+                "index": 45,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 46,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Carbon-10))"
+            },
+            {
+                "index": 47,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Oxygen-40"
+            },
+            {
+                "index": 48,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Alkyl_halide"
+            },
+            {
+                "index": 49,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.(Bond-1 \u2293 (\u2203 inBond.Carbon-22))"
+            }
+        ]
+    },
+    "Random": {
+        "best_expression": "\u2203 hasStructure.Di8",
+        "best_reward": 0.6618,
+        "average_reward": 0.4089,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 0.3853,
+                "expression": "\u2203 hasBond.Bond-7"
+            },
+            {
+                "index": 1,
+                "reward": 0.4206,
+                "expression": "\u2203 hasStructure.Amino"
+            },
+            {
+                "index": 2,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Di10"
+            },
+            {
+                "index": 3,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Six_ring"
+            },
+            {
+                "index": 4,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            },
+            {
+                "index": 5,
+                "reward": 0.3882,
+                "expression": "\u2203 hasAtom.Hydrogen-8"
+            },
+            {
+                "index": 6,
+                "reward": 0.4471,
+                "expression": "\u2203 hasAtom.Carbon-21"
+            },
+            {
+                "index": 7,
+                "reward": 0.3824,
+                "expression": "\u2203 hasAtom.Carbon-14"
+            },
+            {
+                "index": 8,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-22"
+            },
+            {
+                "index": 9,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-10"
+            },
+            {
+                "index": 10,
+                "reward": 0.3882,
+                "expression": "\u2203 hasAtom.Oxygen-50"
+            },
+            {
+                "index": 11,
+                "reward": 0.3853,
+                "expression": "\u2203 hasBond.Bond-7"
+            },
+            {
+                "index": 12,
+                "reward": 0.3853,
+                "expression": "\u2203 hasBond.Bond-7"
+            },
+            {
+                "index": 13,
+                "reward": 0.3971,
+                "expression": "\u2203 hasAtom.Oxygen-49"
+            },
+            {
+                "index": 14,
+                "reward": 0.4206,
+                "expression": "\u2203 hasStructure.Non_ar_hetero_6_ring"
+            },
+            {
+                "index": 15,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Alkyl_halide"
+            },
+            {
+                "index": 16,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Methyl"
+            },
+            {
+                "index": 17,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Alkyl_halide"
+            },
+            {
+                "index": 18,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Six_ring"
+            },
+            {
+                "index": 19,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 20,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 21,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ar_halide"
+            },
+            {
+                "index": 22,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Amine"
+            },
+            {
+                "index": 23,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-22"
+            },
+            {
+                "index": 24,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            },
+            {
+                "index": 25,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            },
+            {
+                "index": 26,
+                "reward": 0.3853,
+                "expression": "\u2203 hasBond.Bond-7"
+            },
+            {
+                "index": 27,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 28,
+                "reward": 0.3853,
+                "expression": "\u2203 hasBond.Bond-7"
+            },
+            {
+                "index": 29,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Non_ar_hetero_5_ring"
+            },
+            {
+                "index": 30,
+                "reward": 0.4824,
+                "expression": "\u2203 hasAtom.Carbon-191"
+            },
+            {
+                "index": 31,
+                "reward": 0.4147,
+                "expression": "\u2203 hasAtom.Nitrogen-36"
+            },
+            {
+                "index": 32,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-22"
+            },
+            {
+                "index": 33,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 34,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Di10"
+            },
+            {
+                "index": 35,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 36,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 37,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Non_ar_6c_ring"
+            },
+            {
+                "index": 38,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-10"
+            },
+            {
+                "index": 39,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 40,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            },
+            {
+                "index": 41,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-1"
+            },
+            {
+                "index": 42,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Six_ring"
+            },
+            {
+                "index": 43,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            },
+            {
+                "index": 44,
+                "reward": 0.65,
+                "expression": "\u2203 hasStructure.Di66"
+            },
+            {
+                "index": 45,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Five_ring"
+            },
+            {
+                "index": 46,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-10"
+            },
+            {
+                "index": 47,
+                "reward": 0.6618,
+                "expression": "\u2203 hasStructure.Di8"
+            },
+            {
+                "index": 48,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Alkyl_halide"
+            },
+            {
+                "index": 49,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            }
+        ]
+    },
+    "RandomFromPositive": {
+        "best_expression": "\u2203 hasStructure.Ring_size_4",
+        "best_reward": 0.6618,
+        "average_reward": 0.4149,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Non_ar_hetero_5_ring"
+            },
+            {
+                "index": 1,
+                "reward": 0.5294,
+                "expression": "\u2203 hasAtom.Sulfur-77"
+            },
+            {
+                "index": 2,
+                "reward": 0.4206,
+                "expression": "\u2203 hasStructure.Amino"
+            },
+            {
+                "index": 3,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 4,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-10"
+            },
+            {
+                "index": 5,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Nitrogen-32"
+            },
+            {
+                "index": 6,
+                "reward": 0.5824,
+                "expression": "\u2203 hasAtom.Nitrogen-33"
+            },
+            {
+                "index": 7,
+                "reward": 0.4088,
+                "expression": "\u2203 hasBond.Bond-2"
+            },
+            {
+                "index": 8,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-10"
+            },
+            {
+                "index": 9,
+                "reward": 0.5265,
+                "expression": "\u2203 hasAtom.Oxygen-42"
+            },
+            {
+                "index": 10,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 11,
+                "reward": 0.4088,
+                "expression": "\u2203 hasBond.Bond-2"
+            },
+            {
+                "index": 12,
+                "reward": 0.4029,
+                "expression": "\u2203 hasAtom.Oxygen-51"
+            },
+            {
+                "index": 13,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-22"
+            },
+            {
+                "index": 14,
+                "reward": 0.4471,
+                "expression": "\u2203 hasAtom.Carbon-21"
+            },
+            {
+                "index": 15,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Non_ar_6c_ring"
+            },
+            {
+                "index": 16,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 17,
+                "reward": 0.6618,
+                "expression": "\u2203 hasStructure.Ring_size_4"
+            },
+            {
+                "index": 18,
+                "reward": 0.3853,
+                "expression": "\u2203 hasBond.Bond-7"
+            },
+            {
+                "index": 19,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Six_ring"
+            },
+            {
+                "index": 20,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Amine"
+            },
+            {
+                "index": 21,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 22,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 23,
+                "reward": 0.3824,
+                "expression": "\u2203 hasAtom.Carbon-14"
+            },
+            {
+                "index": 24,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 25,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Alkyl_halide"
+            },
+            {
+                "index": 26,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-10"
+            },
+            {
+                "index": 27,
+                "reward": 0.5588,
+                "expression": "\u2203 hasStructure.Di23"
+            },
+            {
+                "index": 28,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Oxygen-40"
+            },
+            {
+                "index": 29,
+                "reward": 0.4265,
+                "expression": "\u2203 hasStructure.Sulfide"
+            },
+            {
+                "index": 30,
+                "reward": 0.4088,
+                "expression": "\u2203 hasBond.Bond-2"
+            },
+            {
+                "index": 31,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Di10"
+            },
+            {
+                "index": 32,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 33,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            },
+            {
+                "index": 34,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 35,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Alcohol"
+            },
+            {
+                "index": 36,
+                "reward": 0.3882,
+                "expression": "\u2203 hasAtom.Hydrogen-8"
+            },
+            {
+                "index": 37,
+                "reward": 0.3824,
+                "expression": "\u2203 hasAtom.Carbon-14"
+            },
+            {
+                "index": 38,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 39,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 40,
+                "reward": 0.4206,
+                "expression": "\u2203 hasStructure.Non_ar_hetero_6_ring"
+            },
+            {
+                "index": 41,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-1"
+            },
+            {
+                "index": 42,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Nitrogen-32"
+            },
+            {
+                "index": 43,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Non_ar_6c_ring"
+            },
+            {
+                "index": 44,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Amine"
+            },
+            {
+                "index": 45,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            },
+            {
+                "index": 46,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-10"
+            },
+            {
+                "index": 47,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            },
+            {
+                "index": 48,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Non_ar_6c_ring"
+            },
+            {
+                "index": 49,
+                "reward": 0.3824,
+                "expression": "\u2203 hasAtom.Carbon-14"
+            }
+        ]
+    },
+    "Biased": {
+        "best_expression": "\u2203 hasAtom.Oxygen-53",
+        "best_reward": 0.5824,
+        "average_reward": 0.4013,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 0.3853,
+                "expression": "\u2203 hasBond.Bond-7"
+            },
+            {
+                "index": 1,
+                "reward": 0.3882,
+                "expression": "\u2203 hasAtom.Carbon-16"
+            },
+            {
+                "index": 2,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Oxygen-40"
+            },
+            {
+                "index": 3,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-10"
+            },
+            {
+                "index": 4,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Methyl"
+            },
+            {
+                "index": 5,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-22"
+            },
+            {
+                "index": 6,
+                "reward": 0.4382,
+                "expression": "\u2203 hasStructure.Phenol"
+            },
+            {
+                "index": 7,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Nitrogen-32"
+            },
+            {
+                "index": 8,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Non_ar_6c_ring"
+            },
+            {
+                "index": 9,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Five_ring"
+            },
+            {
+                "index": 10,
+                "reward": 0.5824,
+                "expression": "\u2203 hasAtom.Oxygen-53"
+            },
+            {
+                "index": 11,
+                "reward": 0.4088,
+                "expression": "\u2203 hasBond.Bond-2"
+            },
+            {
+                "index": 12,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 13,
+                "reward": 0.3882,
+                "expression": "\u2203 hasAtom.Hydrogen-8"
+            },
+            {
+                "index": 14,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-1"
+            },
+            {
+                "index": 15,
+                "reward": 0.3824,
+                "expression": "\u2203 hasAtom.Oxygen-45"
+            },
+            {
+                "index": 16,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            },
+            {
+                "index": 17,
+                "reward": 0.4206,
+                "expression": "\u2203 hasStructure.Nitro"
+            },
+            {
+                "index": 18,
+                "reward": 0.4029,
+                "expression": "\u2203 hasAtom.Oxygen-51"
+            },
+            {
+                "index": 19,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Alkyl_halide"
+            },
+            {
+                "index": 20,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 21,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 22,
+                "reward": 0.4088,
+                "expression": "\u2203 hasBond.Bond-2"
+            },
+            {
+                "index": 23,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-1"
+            },
+            {
+                "index": 24,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Methyl"
+            },
+            {
+                "index": 25,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Amine"
+            },
+            {
+                "index": 26,
+                "reward": 0.4471,
+                "expression": "\u2203 hasAtom.Carbon-21"
+            },
+            {
+                "index": 27,
+                "reward": 0.4088,
+                "expression": "\u2203 hasBond.Bond-2"
+            },
+            {
+                "index": 28,
+                "reward": 0.4176,
+                "expression": "\u2203 hasStructure.Amine"
+            },
+            {
+                "index": 29,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Ether"
+            },
+            {
+                "index": 30,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            },
+            {
+                "index": 31,
+                "reward": 0.4382,
+                "expression": "\u2203 hasStructure.Phenol"
+            },
+            {
+                "index": 32,
+                "reward": 0.3824,
+                "expression": "\u2203 hasAtom.Carbon-14"
+            },
+            {
+                "index": 33,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Six_ring"
+            },
+            {
+                "index": 34,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Nitrogen-32"
+            },
+            {
+                "index": 35,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-22"
+            },
+            {
+                "index": 36,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 37,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Hydrogen-3"
+            },
+            {
+                "index": 38,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            },
+            {
+                "index": 39,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Methyl"
+            },
+            {
+                "index": 40,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Nitrogen-32"
+            },
+            {
+                "index": 41,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Nitrogen-32"
+            },
+            {
+                "index": 42,
+                "reward": 0.4206,
+                "expression": "\u2203 hasStructure.Non_ar_hetero_6_ring"
+            },
+            {
+                "index": 43,
+                "reward": 0.4235,
+                "expression": "\u2203 hasStructure.Di10"
+            },
+            {
+                "index": 44,
+                "reward": 0.4029,
+                "expression": "\u2203 hasStructure.Six_ring"
+            },
+            {
+                "index": 45,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Carbon-22"
+            },
+            {
+                "index": 46,
+                "reward": 0.3794,
+                "expression": "\u2203 hasAtom.Chlorine-93"
+            },
+            {
+                "index": 47,
+                "reward": 0.4206,
+                "expression": "\u2203 hasStructure.Ketone"
+            },
+            {
+                "index": 48,
+                "reward": 0.4088,
+                "expression": "\u2203 hasBond.Bond-2"
+            },
+            {
+                "index": 49,
+                "reward": 0.3794,
+                "expression": "\u2203 hasBond.Bond-1"
+            }
+        ]
+    }
+}

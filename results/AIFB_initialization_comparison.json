@@ -1,0 +1,1030 @@
+{
+    "RL": {
+        "best_expression": "\u2203 publication.(InCollection \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))",
+        "best_reward": 0.4261,
+        "average_reward": 0.3168,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 1,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 2,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 worksAtProject.Project))))"
+            },
+            {
+                "index": 3,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 4,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 5,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 6,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 7,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 8,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 9,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InCollection))))"
+            },
+            {
+                "index": 10,
+                "reward": 0.4261,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 11,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 12,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 13,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 14,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 15,
+                "reward": 0.4205,
+                "expression": "\u2203 worksAtProject.(Project \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 16,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 17,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 18,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 19,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 20,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.(Project \u2293 (\u2203 member.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 21,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 22,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 23,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 24,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 25,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 26,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.(Project \u2293 (\u2203 member.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 27,
+                "reward": 0.267,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 28,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 29,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.(Project \u2293 (\u2203 member.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 30,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.(Project \u2293 (\u2203 carriedOutBy.(ResearchGroup \u2293 (\u2203 head.Person))))"
+            },
+            {
+                "index": 31,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 32,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 33,
+                "reward": 0.3125,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 34,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 35,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 36,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 37,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 38,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 39,
+                "reward": 0.3182,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 projectInfo.Publication))))"
+            },
+            {
+                "index": 40,
+                "reward": 0.3182,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 projectInfo.Publication))))"
+            },
+            {
+                "index": 41,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 42,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 43,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 44,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 45,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 46,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 47,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 worksAtProject.Project))))"
+            },
+            {
+                "index": 48,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InCollection))))"
+            },
+            {
+                "index": 49,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            }
+        ]
+    },
+    "Random": {
+        "best_expression": "\u2203 publication.(InCollection \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 isAbout.ResearchTopic))))",
+        "best_reward": 0.4318,
+        "average_reward": 0.3141,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 1,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 2,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 3,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.Project"
+            },
+            {
+                "index": 4,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 5,
+                "reward": 0.2784,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.ResearchTopic))"
+            },
+            {
+                "index": 6,
+                "reward": 0.3352,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 projectInfo.InCollection))))"
+            },
+            {
+                "index": 7,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 8,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 9,
+                "reward": 0.4261,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 10,
+                "reward": 0.3125,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 11,
+                "reward": 0.2784,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 12,
+                "reward": 0.4318,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 isAbout.ResearchTopic))))"
+            },
+            {
+                "index": 13,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 14,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 15,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 16,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 17,
+                "reward": 0.267,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 18,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 19,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 financedBy.Organization))))"
+            },
+            {
+                "index": 20,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 21,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 22,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 23,
+                "reward": 0.267,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 24,
+                "reward": 0.3125,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 25,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.(Project \u2293 (\u2203 member.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 26,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 27,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 28,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.InCollection"
+            },
+            {
+                "index": 29,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 30,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InCollection))))"
+            },
+            {
+                "index": 31,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 32,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 33,
+                "reward": 0.2784,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 34,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 35,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 36,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 37,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 38,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 39,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 40,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 41,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 42,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.InCollection"
+            },
+            {
+                "index": 43,
+                "reward": 0.3125,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 44,
+                "reward": 0.3182,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 hasProject.Project))"
+            },
+            {
+                "index": 45,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 46,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 47,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 48,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 49,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.Person))"
+            }
+        ]
+    },
+    "RandomFromPositive": {
+        "best_expression": "\u2203 publication.(InCollection \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 projectInfo.InProceedings))))",
+        "best_reward": 0.4318,
+        "average_reward": 0.336,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 1,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 2,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 3,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.InCollection"
+            },
+            {
+                "index": 4,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.InCollection"
+            },
+            {
+                "index": 5,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 6,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 7,
+                "reward": 0.3125,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 8,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InCollection))))"
+            },
+            {
+                "index": 9,
+                "reward": 0.3125,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 10,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 11,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 12,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 13,
+                "reward": 0.3352,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 projectInfo.InCollection))))"
+            },
+            {
+                "index": 14,
+                "reward": 0.3125,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 15,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 16,
+                "reward": 0.4318,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 projectInfo.InProceedings))))"
+            },
+            {
+                "index": 17,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.Project"
+            },
+            {
+                "index": 18,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.Project"
+            },
+            {
+                "index": 19,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 20,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 21,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 22,
+                "reward": 0.4318,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 projectInfo.InProceedings))))"
+            },
+            {
+                "index": 23,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 24,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 25,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 26,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.Project"
+            },
+            {
+                "index": 27,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 28,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 29,
+                "reward": 0.4205,
+                "expression": "\u2203 worksAtProject.(Project \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 30,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 member.Person))))"
+            },
+            {
+                "index": 31,
+                "reward": 0.267,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 32,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.InCollection"
+            },
+            {
+                "index": 33,
+                "reward": 0.4205,
+                "expression": "\u2203 worksAtProject.(Project \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 34,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 35,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InCollection))))"
+            },
+            {
+                "index": 36,
+                "reward": 0.2784,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 37,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 38,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.ResearchTopic))"
+            },
+            {
+                "index": 39,
+                "reward": 0.4261,
+                "expression": "\u2203 worksAtProject.(Project \u2293 (\u2203 financedBy.(Organization \u2293 (\u2203 finances.Project))))"
+            },
+            {
+                "index": 40,
+                "reward": 0.3295,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 hasProject.Project))"
+            },
+            {
+                "index": 41,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.(Project \u2293 (\u2203 carriedOutBy.(ResearchGroup \u2293 (\u2203 publishes.InCollection))))"
+            },
+            {
+                "index": 42,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 43,
+                "reward": 0.3182,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 carriedOutBy.ResearchGroup))))"
+            },
+            {
+                "index": 44,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 45,
+                "reward": 0.267,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 46,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.Project"
+            },
+            {
+                "index": 47,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 48,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 49,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            }
+        ]
+    },
+    "Biased": {
+        "best_expression": "\u2203 publication.(InCollection \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 carriedOutBy.ResearchGroup))))",
+        "best_reward": 0.4318,
+        "average_reward": 0.3222,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 1,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 2,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.InCollection"
+            },
+            {
+                "index": 3,
+                "reward": 0.2841,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 worksAtProject.Project))))"
+            },
+            {
+                "index": 4,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 5,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 6,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 member.Person))))"
+            },
+            {
+                "index": 7,
+                "reward": 0.4205,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 8,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 9,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 10,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.InCollection"
+            },
+            {
+                "index": 11,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 12,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 13,
+                "reward": 0.267,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 14,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 isAbout.ResearchTopic))))"
+            },
+            {
+                "index": 15,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 16,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 17,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 18,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 19,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 member.Person))))"
+            },
+            {
+                "index": 20,
+                "reward": 0.4148,
+                "expression": "\u2203 worksAtProject.(Project \u2293 (\u2203 projectInfo.(InProceedings \u2293 (\u2203 author.Person))))"
+            },
+            {
+                "index": 21,
+                "reward": 0.267,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 22,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 23,
+                "reward": 0.4205,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 24,
+                "reward": 0.4261,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 25,
+                "reward": 0.2784,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.ResearchTopic))"
+            },
+            {
+                "index": 26,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InCollection))))"
+            },
+            {
+                "index": 27,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 28,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InCollection))))"
+            },
+            {
+                "index": 29,
+                "reward": 0.4318,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 hasProject.(Project \u2293 (\u2203 carriedOutBy.ResearchGroup))))"
+            },
+            {
+                "index": 30,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 31,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 32,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 33,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 author.Person))"
+            },
+            {
+                "index": 34,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 35,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 36,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.Publication))))"
+            },
+            {
+                "index": 37,
+                "reward": 0.267,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 38,
+                "reward": 0.4205,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 39,
+                "reward": 0.4091,
+                "expression": "\u2203 worksAtProject.Project"
+            },
+            {
+                "index": 40,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 41,
+                "reward": 0.3068,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InProceedings))))"
+            },
+            {
+                "index": 42,
+                "reward": 0.267,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 43,
+                "reward": 0.2784,
+                "expression": "\u2203 publication.(Publication \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 44,
+                "reward": 0.3239,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 isWorkedOnBy.Person))))"
+            },
+            {
+                "index": 45,
+                "reward": 0.2898,
+                "expression": "\u2203 publication.InProceedings"
+            },
+            {
+                "index": 46,
+                "reward": 0.3125,
+                "expression": "\u2203 publication.(InProceedings \u2293 (\u2203 isAbout.(ResearchTopic \u2293 (\u2203 dealtWithIn.Project))))"
+            },
+            {
+                "index": 47,
+                "reward": 0.3864,
+                "expression": "\u2203 publication.(InCollection \u2293 (\u2203 author.(Person \u2293 (\u2203 publication.InCollection))))"
+            },
+            {
+                "index": 48,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            },
+            {
+                "index": 49,
+                "reward": 0.3011,
+                "expression": "\u2203 publication.Publication"
+            }
+        ]
+    }
+}

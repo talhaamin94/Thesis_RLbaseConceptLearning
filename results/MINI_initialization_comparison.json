@@ -1,0 +1,230 @@
+{
+    "RL": {
+        "best_expression": "\u2203 connected_to.C",
+        "best_reward": 1.0,
+        "average_reward": 0.92,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 1,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 2,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 3,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 4,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 5,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 6,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 7,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 8,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 9,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            }
+        ]
+    },
+    "Random": {
+        "best_expression": "\u2203 connected_to.C",
+        "best_reward": 1.0,
+        "average_reward": 0.76,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 1,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 2,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 3,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 4,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 5,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 6,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 7,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 8,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 9,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            }
+        ]
+    },
+    "RandomFromPositive": {
+        "best_expression": "\u2203 connected_to.C",
+        "best_reward": 1.0,
+        "average_reward": 0.88,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 1,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 2,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 3,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 4,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 5,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 6,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 7,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 8,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 9,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            }
+        ]
+    },
+    "Biased": {
+        "best_expression": "\u2203 connected_to.C",
+        "best_reward": 1.0,
+        "average_reward": 0.76,
+        "all_results": [
+            {
+                "index": 0,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 1,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 2,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 3,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 4,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 5,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 6,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 7,
+                "reward": 0.6,
+                "expression": "\u2203 related_to.(B \u2293 (\u2203 connected_to.C))"
+            },
+            {
+                "index": 8,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            },
+            {
+                "index": 9,
+                "reward": 1.0,
+                "expression": "\u2203 connected_to.C"
+            }
+        ]
+    }
+}

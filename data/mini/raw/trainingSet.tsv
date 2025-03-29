@@ -1,9 +1,9 @@
 A_instance	id	classification
-http://example.org/A4	4	1
-http://example.org/A1	1	1
-http://example.org/A10	10	0
-http://example.org/A7	7	0
-http://example.org/A3	3	1
+http://example.org/A5	5	1
 http://example.org/A8	8	0
 http://example.org/A6	6	0
 http://example.org/A2	2	1
+http://example.org/A7	7	0
+http://example.org/A4	4	1
+http://example.org/A3	3	1
+http://example.org/A1	1	1
